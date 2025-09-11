@@ -1,5 +1,13 @@
 ﻿namespace _3DPrinterJob.API.Models
 {
+    public enum StatType
+    {
+        Pending,
+        InProgress,
+        Completed,
+        Failed
+    }
+
     public class Status
     {
         public int Id { get; set; }                                 // id of the status
