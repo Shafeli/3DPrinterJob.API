@@ -1,4 +1,7 @@
-﻿namespace _3DPrinterJob.API.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace _3DPrinterJob.API.Models
 {
 
     public class PrinterJob
@@ -17,6 +20,8 @@
 
         public int RequesterId { get; set; }                        // foreign key to Requester
         public Requester Requester { get; set; }                    // navigation property to Requester
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedDate { get; set; } = DateTime.Now;   // date the print job was created
     }
 }
