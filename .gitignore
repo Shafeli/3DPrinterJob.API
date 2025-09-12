@@ -5,6 +5,7 @@
 
 # User-specific files
 .env
+docker-compose.dev.yml
 *.rsuser
 *.suo
 *.user
