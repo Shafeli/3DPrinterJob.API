@@ -1,8 +1,12 @@
 using _3DPrinterJob.API.Data.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
+using DotNetEnv;
 
 var builder = WebApplication.CreateBuilder(args);
+
+Env.Load(); // Load .env file
+builder.Configuration.AddEnvironmentVariables();
 
 // Add services to the container.
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

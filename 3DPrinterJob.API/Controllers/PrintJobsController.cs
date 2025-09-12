@@ -4,10 +4,19 @@
 
 namespace _3DPrinterJob.API.Controllers
 {
+
+
     [Route("api/[controller]")]
     [ApiController]
     public class PrintJobsController : ControllerBase
     {
+
+        [HttpGet("ping")]
+        public IActionResult Ping()
+        {
+            return Ok(new { message = "pong", timestamp = DateTime.UtcNow });
+        }
+
         // GET: api/<PrintJobsController>
         [HttpGet]
         public IEnumerable<string> Get()
