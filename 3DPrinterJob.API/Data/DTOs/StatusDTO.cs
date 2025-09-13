@@ -1,20 +1,24 @@
 ﻿using _3DPrinterJob.API.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace _3DPrinterJob.API.Data.DTOs;
 
-    public class StatusDTO
-    {
-        public int Id { get; set; }
-        public StatType StatType { get; set; }
-    }
 
 // StatusMutationDTO split into two for clarity and REST conventions as well as setup for partial updates, role-based constraints.
 public class CreateStatusDto
 {
+    [Required]
     public StatType Stat { get; set; }
 }
 
-public class UpdateStatusDto
+public class UpdateStatusDto : CreateStatusDto
 {
-    public StatType Stat { get; set; }
+    [Required]
+    public int Id { get; set; }
+
 }
+
+public record StatusReadDto(
+    int Id,
+    StatType Stat
+);
