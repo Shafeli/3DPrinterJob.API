@@ -1,21 +1,24 @@
 ﻿using _3DPrinterJob.API.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace _3DPrinterJob.API.Data.DTOs;
 
 // expand info later email, role, job count.
-public class RequesterDTO
+public class CreateRequesterDto
 {
-    public int Id { get; set; }
+    [Required]
     public string Name { get; set; }
 }
 
 // MutationDTO split into two for clarity and REST conventions as well as setup for partial updates, role-based constraints.
-public class CreateRequesterDto
+
+public class UpdateRequesterDto : CreateRequesterDto
 {
-    public string Name { get; set; }
+    [Required]
+    public int Id { get; set; }
 }
 
-public class UpdateRequesterDto
-{
-    public string Name { get; set; }
-}
+public record RequesterReadDto(
+    int Id,
+    string Name
+);
