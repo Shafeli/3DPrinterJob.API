@@ -21,6 +21,8 @@ public class CreatePrinterJobDto
 
 public class UpdatePrinterJobDto : CreatePrinterJobDto
 {
+    [Required]
+    public int Id { get; set; }
 
     [Required]
     [StringLength(1500, MinimumLength = 5, ErrorMessage = "Notes must be at least 5 characters.")]
