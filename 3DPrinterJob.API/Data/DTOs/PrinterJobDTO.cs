@@ -13,7 +13,7 @@ public class PrinterJobDTO
     public string Notes { get; set; }
 
     public int StatusId { get; set; }
-    public StatusDTO Status { get; set; }
+    public StatusReadDto Status { get; set; }
 
     public int RequesterId { get; set; }
     public RequesterDTO Requester { get; set; }
