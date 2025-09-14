@@ -10,8 +10,8 @@ namespace _3DPrinterJob.API.Models
         public string Name { get; set; }                            // name of the print job
 
 
-        public string DownloadLink { get; set; }                    // link to download the 3D model file
-        public string Notes { get; set; }                           // additional notes about the print job
+        public string? DownloadLink { get; set; }                    // link to download the 3D model file
+        public string? Notes { get; set; }                           // additional notes about the print job
 
 
         public int StatusId { get; set; }                           // foreign key to Status
