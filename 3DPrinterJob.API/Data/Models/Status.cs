@@ -2,6 +2,7 @@
 {
     public enum StatType
     {
+        Submitted,   // New default status
         Pending,
         InProgress,
         Completed,
