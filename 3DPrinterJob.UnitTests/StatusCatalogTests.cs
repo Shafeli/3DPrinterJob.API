@@ -32,5 +32,30 @@ namespace _3DPrinterJob.UnitTests
                 Assert.Contains(status, dbStatuses);
             }
         }
+
+
+        // To run this test dotnet test --filter "Name=SeededCatalog_ShouldMatchEnumValues"
+/*        [Fact]
+        public void StatusCatalog_ShouldNotGrow()
+        {
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
+                .UseInMemoryDatabase(databaseName: "TestCatalogDb")
+                .Options;
+
+            using var context = new ApplicationDbContext(options);
+            context.Database.EnsureCreated(); // trigger OnModelCreating
+
+            var initialCount = context.Statuses.Count();
+
+
+            var enumStatuses = Enum.GetNames(typeof(StatType));
+
+            Assert.True(enumStatuses.Length, dbStatuses.Count);
+            foreach (var status in enumStatuses)
+            {
+                Assert.Contains(status, dbStatuses);
+            }
+        }*/
+
     }
 }
