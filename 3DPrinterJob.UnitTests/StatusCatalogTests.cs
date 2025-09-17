@@ -8,6 +8,7 @@ namespace _3DPrinterJob.UnitTests
 
     public class StatusCatalogTests
     {
+        // To run this test dotnet test --filter "Name=SeededCatalog_ShouldMatchEnumValues"
         [Fact]
         public void SeededCatalog_ShouldMatchEnumValues()
         {
