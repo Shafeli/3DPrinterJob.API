@@ -21,27 +21,42 @@ public static class DbContextFactory
 }
 
 
-public static class DummyData
+public static class DataHelper
 {
-    // Add methods to generate dummy data for tests if needed
-    public static PrinterJob CreatePrinterJob(string name = "Test Printer Job")
-    {
-        return new PrinterJob
-        {
-            Name = name,
-            StatusId = 1, // 1 corresponds to 'Submitted'
-            Requester = new Requester { Name = "Test Requester" }
-        };
-    }
 
-    public static CreatePrinterJobDto CreatePrinterJobDto()
+    public static CreatePrinterJobDto CreatePrinterJobDto(int requesterId)
     {
         return new CreatePrinterJobDto
         {
             Name = "Test Job",
             Notes = "This is a test job.",
-            RequesterId = 1
+            RequesterId = requesterId
         };
     }
+
+    public static Requester SeedRequester(ApplicationDbContext context, string name = "Test Requester")
+    {
+        var requester = new Requester { Name = name };
+        context.Requesters.Add(requester);
+        context.SaveChanges();
+        return requester;
+    }
+
+    public static PrinterJob SeedPrinterJob(ApplicationDbContext context, string name = "Test Job")
+    {
+        var requester = SeedRequester(context);
+
+        var job = new PrinterJob
+        {
+            Name = name,
+            StatusId = 1,
+            RequesterId = requester.Id
+        };
+
+        context.PrinterJobs.Add(job);
+        context.SaveChanges();
+        return job;
+    }
+
 }
 
