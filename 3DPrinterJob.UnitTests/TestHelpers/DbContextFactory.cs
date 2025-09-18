@@ -1,4 +1,5 @@
 ﻿using _3DPrinterJob.API.Data.DatabaseContext;
+using _3DPrinterJob.API.Data.DTOs;
 using _3DPrinterJob.API.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,7 +21,6 @@ public static class DbContextFactory
 }
 
 
-// TODO: Requester dummy data needs to be seeded before connecting PrinterJob dummmy data
 public static class DummyData
 {
     // Add methods to generate dummy data for tests if needed
@@ -29,8 +29,18 @@ public static class DummyData
         return new PrinterJob
         {
             Name = name,
-            StatusId = 1, // Assuming 1 corresponds to 'Submitted'
-            // RequesterId = 1 // Assuming a requester with ID 1 exists
+            StatusId = 1, // 1 corresponds to 'Submitted'
+            Requester = new Requester { Name = "Test Requester" }
+        };
+    }
+
+    public static CreatePrinterJobDto CreatePrinterJobDto()
+    {
+        return new CreatePrinterJobDto
+        {
+            Name = "Test Job",
+            Notes = "This is a test job.",
+            RequesterId = 1
         };
     }
 }
