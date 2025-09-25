@@ -33,5 +33,26 @@ namespace _3DPrinterJob.UnitTests
             }
         }
 
+
+        // To run this test dotnet test --filter "Name=SeededCatalog_ShouldNotContainDuplicates"
+        [Fact]
+        public void SeededCatalog_ShouldNotContainDuplicates()
+        {
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
+                .UseInMemoryDatabase("TestCatalogDb_NoDuplicates")
+                .Options;
+
+            using var context = new ApplicationDbContext(options);
+            context.Database.EnsureCreated();
+
+            var duplicates = context.Statuses
+                .ToList()
+                .GroupBy(s => s.Stat)
+                .Where(g => g.Count() > 1)
+                .ToList();
+
+            Assert.Empty(duplicates);
+        }
+
     }
 }
