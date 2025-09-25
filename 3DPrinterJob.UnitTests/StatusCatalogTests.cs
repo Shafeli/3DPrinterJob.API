@@ -54,5 +54,26 @@ namespace _3DPrinterJob.UnitTests
             Assert.Empty(duplicates);
         }
 
+
+        // Tests the enum to db mapping
+        // To run this test dotnet test --filter "Name=EnumValues_ShouldMapToCorrectIds"
+        [Fact]
+        public void EnumValues_ShouldMapToCorrectIds()
+        {
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
+                .UseInMemoryDatabase("TestCatalogDb_EnumMapping")
+                .Options;
+
+            using var context = new ApplicationDbContext(options);
+            context.Database.EnsureCreated();
+
+            foreach (StatType enumValue in Enum.GetValues(typeof(StatType)))
+            {
+                var status = context.Statuses.SingleOrDefault(s => s.Stat == enumValue);
+                Assert.NotNull(status);
+                Assert.Equal(enumValue.ToString(), status.Stat.ToString());
+            }
+        }
+
     }
 }
