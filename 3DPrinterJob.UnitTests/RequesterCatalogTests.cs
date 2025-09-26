@@ -31,7 +31,7 @@ namespace _3DPrinterJob.UnitTests
             DataHelper.SeedRequester(context, "Robert");
 
 
-            // context.SaveChanges();
+            context.SaveChanges();
 
             var duplicates = context.Requesters
                 .ToList()
