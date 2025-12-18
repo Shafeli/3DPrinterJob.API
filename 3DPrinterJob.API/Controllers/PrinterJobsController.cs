@@ -131,7 +131,7 @@ namespace _3DPrinterJob.API.Controllers
                 DownloadLink = newPrinterJob.DownloadLink,
                 Notes = newPrinterJob.Notes,
                 RequesterId = newPrinterJob.RequesterId,
-                StatusId = 1 // Default to "Submitted"
+                StatusId = 0 // Default to "Submitted"
             };
 
             _context.PrinterJobs.Add(printerJob);
